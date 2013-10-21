@@ -134,7 +134,7 @@ private
   end
 
   def self.ranges
-    rngs = Nori.new.parse(File.read(File.dirname(__FILE__) + '/../../data/RangeMessage.xml'))
+    rngs = Nori.parse(File.read(File.dirname(__FILE__) + '/../../data/RangeMessage.xml'))
     Array(rngs["ISBNRangeMessage"]["RegistrationGroups"]["Group"]).flatten.inject({}) do |memo, group|
       prefix = group["Prefix"].gsub(/-/, '')
       ranges = Array(group["Rules"]["Rule"]).flatten.map do |rule|
